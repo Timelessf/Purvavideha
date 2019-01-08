@@ -1,0 +1,48 @@
+#DataSource
+spring:
+  datasource:
+    name: druidDataSource
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    #阿里云地址
+    #url: jdbc:mysql://101.200.53.134:3306/anime?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&failOverReadOnly=false
+    #本地地址关闭SSL
+    url: jdbc:mysql://172.16.35.80:3306/anime?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&failOverReadOnly=false
+    username: anime
+    password: anime
+    druid:
+      connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+      filters: stat,wall,log4j2,config
+      initialSize: 5
+      maxActive: 100
+      maxPoolPreparedStatementPerConnectionSize: 20
+      maxWait: 60000
+      minEvictableIdleTimeMillis: 300000
+      minIdle: 5
+      poolPreparedStatements: true
+      testOnBorrow: true
+      testOnReturn: false
+      testWhileIdle: true
+      timeBetweenEvictionRunsMillis: 60000
+      useGlobalDataSourceStat: true
+      validationQuery: SELECT 'x'
+  #时间工具类
+  jackson:
+    date-format: yyyy-MM-dd  #如果使用字符串表示，用这行设置格式
+    time-zone: GMT+8
+    serialization:
+      write-dates-as-timestamps: false  #使用数值timestamp表示日期
+
+#日志记录
+logging:
+  config: classpath:log4j2.xml
+  file: target/app.log
+  level:
+    ROOT: WARN
+    cn.purvavideha.moff: TRACE
+#  level:
+#    com.baomidou.mybatisplus.samples.pagination: debug
+
+mybatis-plus:
+  mapper-locations: classpath:/mapper/*Mapper.xml
+

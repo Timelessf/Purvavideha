@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+        <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.purvavideha.moff.dao.IAnimeExpoDao">
+
+    <select id="selectAnimeExpo" resultType="cn.purvavideha.moff.entity.AnimeExpo">
+        select * from anime_expo
+    </select>
+
+</mapper>

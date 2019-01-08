@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+<div class="container">
+
+    <form id="addUserForm">
+        <br/>
+        <div>
+            <label for="auTele">账号：</label>
+            <input type="text" id="auTele" name="auTele" placeholder="输入账号">
+        </div>
+        <div>
+            <label for="auPwd">密码：</label>
+            <input type="text" id="auPwd" name="auPwd" placeholder="输入密码">
+        </div>
+        <div>
+            <label for="auPwd2">确认密码：</label>
+            <input type="text" id="auPwd2" name="auPwd2" placeholder="输入密码">
+        </div>
+        <div>
+            <label for="auName">昵称：</label>
+            <input type="text" id="auName" name="auName" placeholder="输入昵称">
+        </div>
+        <div>
+            <button type="button" id="saveBtn">提交</button>
+        </div>
+    </form>
+</div>
+<script>
+    var addUser = function () {
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            url: "/register",
+            data: $("#addUserForm").serialize(),
+            success: function (msg) {
+                alert("添加成功!!!")
+            }
+        });
+    };
+
+    $('#saveBtn').on('click', function () {
+        addUser();
+    });
+
+</script>
+</body>
+</html>

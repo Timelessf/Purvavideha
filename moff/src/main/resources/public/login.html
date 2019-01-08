@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+<form id="queryAnimeUserform">
+    <br/>
+
+    <label for="auTele">账号：</label>
+    <input type="text" id="auTele" name="auTele" placeholder="输入账号"></br></br>
+
+    <label for="auPwd">密码：</label>
+    <input type="text" id="auPwd" name="auPwd" placeholder="输入密码"></br></br>
+
+    <button type="button" id="loginBtn">提交</button>
+
+</form>
+
+<script>
+
+
+    $(function () {
+        $('#loginBtn').click(function () {
+
+            $.ajax({
+                type: "post",
+                dataType: "json",
+                url: "/login",
+                data: $("#queryAnimeUserform").serialize(),
+
+                success: function (msg) {
+                    alert("登录成功!!!")
+                }
+            });
+        })
+    })
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+<div class="container">
+
+    <form id="addUserForm">
+        <br/>
+        <div>
+            <label for="postContent">发帖内容：</label>
+            <input type="text" id="postContent" name="postContent" placeholder="输入发帖名称">
+        </div>
+        <div>
+            <label for="postTitle">发帖标题：</label>
+            <input type="text" id="postTitle" name="postTitle" placeholder="输入发帖标题">
+        </div>
+        <div>
+            <button type="button" id="saveBtn">提交</button>
+        </div>
+    </form>
+</div>
+<script>
+    var addUser = function () {
+        $.ajax({
+            type: "post",
+            dataType: "json",
+            url: "addpuposted",
+            data: $("#addUserForm").serialize(),
+            /* {
+                "postTitle": $("#postTitle").val(),
+                "postContent": $("#postContent").val()
+            },*/
+            success: function () {
+                /*$('#cancelBtn').click();*/
+                alert("添加成功!!!")
+            }
+        });
+    }
+
+    $('#saveBtn').on('click', function () {
+        addUser();
+    });
+
+</script>
+</body>
+</html>
